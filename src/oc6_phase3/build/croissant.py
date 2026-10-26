@@ -567,7 +567,8 @@ def file_entries(path: Path) -> tuple[dict, dict]:
                          "description": description, "field": fields}
 
 
-def build_croissant(out_dir: Path, inline: dict[str, list[dict]], version: str) -> dict:
+def build_croissant(out_dir: Path, inline: dict[str, list[dict]], version: str,
+                    date_published: str | None = None) -> dict:
     files = sorted(out_dir.glob("oc6.phase3.archive.*.parquet")) + sorted(
         out_dir.glob("oc6.phase3.derived.*.parquet"))
     distribution, record_sets = [], []
@@ -587,7 +588,7 @@ def build_croissant(out_dir: Path, inline: dict[str, list[dict]], version: str) 
         "title": DATASET_TITLE,
         "description": DATASET_DESCRIPTION,
         "version": version,
-        "datePublished": date.today().isoformat(),
+        "datePublished": date_published or date.today().isoformat(),
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "url": f"https://doi.org/{DATASET_DOI}",
         "citeAs": CITE_AS,
@@ -618,16 +619,18 @@ def existing_inline(out_dir: Path) -> dict[str, list[dict]]:
 
 
 def write_croissant(out_dir: Path, inline: dict[str, list[dict]] | None = None,
-                    version: str = "1.0.0") -> Path:
+                    version: str = "1.0.0", date_published: str | None = None) -> Path:
     """Describe every archive and derived file in ``out_dir``.
 
     ``inline`` adds or replaces inline record sets; the ones already in
     ``out_dir/croissant.json`` are kept, so the derive step need not regenerate them.
+    ``date_published`` (ISO date) defaults to today; pass the record's publication date
+    when rewriting the file of a published version.
     """
     records = existing_inline(out_dir)
     records.update(registry_records())
     records.update(inline or {})
     target = out_dir / "croissant.json"
-    target.write_text(json.dumps(build_croissant(out_dir, records, version), indent=1)
-                      + "\n")
+    target.write_text(json.dumps(build_croissant(out_dir, records, version, date_published),
+                                 indent=1) + "\n")
     return target
