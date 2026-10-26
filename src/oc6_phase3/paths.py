@@ -21,9 +21,11 @@ import os
 from collections.abc import Iterator
 from pathlib import Path
 
-#: The benchmark dataset: archive and derived tables, croissant.json.
+#: The benchmark dataset: archive and derived tables, croissant.json. The concept DOI
+#: resolves to the newest version; it is the one to give a RenkuLab data connector.
 ZENODO_RECORD_ID = "23593301"
 ZENODO_DOI = f"10.5281/zenodo.{ZENODO_RECORD_ID}"
+ZENODO_CONCEPT_DOI = "10.5281/zenodo.23593300"
 #: The Wind Data Hub mirror (version 1: 766 files; version 2: all 4,130).
 MIRROR_RECORD_ID = "22746850"
 MIRROR_CONCEPT_DOI = "10.5281/zenodo.22746849"
@@ -82,7 +84,7 @@ def data_dir(download: bool = False) -> Path:
     raise FileNotFoundError(
         "Could not locate the OC6 Phase III data.\n"
         "  * On RenkuLab: add the Zenodo data connector for "
-        f"{ZENODO_DOI} to the session.\n"
+        f"{ZENODO_CONCEPT_DOI} to the session.\n"
         "  * Locally: call oc6_phase3.paths.data_dir(download=True), "
         "or set $OC6_DATA_DIR."
     )

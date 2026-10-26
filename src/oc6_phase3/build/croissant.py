@@ -68,8 +68,7 @@ CONTEXT = {
 DATASET_DOI = "10.5281/zenodo.23593301"
 DATASET_NAME = "oc6-phase3-floating-rotor-aerodynamics-benchmark"
 DATASET_TITLE = (
-    "Floating Wind Turbine Rotor Aerodynamics Benchmark: Wind Tunnel Measurements and 56 "
-    "Model Results for Surge and Pitch Motion (IEA Wind Task 30 OC6 Phase III)"
+    "Floating Wind Turbine Rotor Aerodynamics Benchmark (IEA Wind Task 30 OC6 Phase III)"
 )
 DATASET_DESCRIPTION = (
     "A ready-to-use benchmark for wind turbine aerodynamics codes on a floating platform: "
@@ -83,11 +82,12 @@ DATASET_DESCRIPTION = (
     "polars) and the UNAFLOW record of Experiment 1 (tower loads, hot-wire wake and PIV for "
     "every test); a source-files table gives the checksum, header and layout of each of the "
     "4,730 source files. The derived tables (oc6.phase3.derived.*) hold the paper's load "
-    "metrics, the phase-averaged Experiment 1 loads and the blade-tip vortex centres. "
+    "metrics, the phase-averaged Experiment 1 loads, the blade-tip vortex centres and their "
+    "sensitivity to the vortex detector settings. "
     "The airfoil polars of every blade station and the measured SD7032 polars are tables too; "
     "the small reference tables - models, load cases, blade geometry, the AeroDyn airfoil "
     "parameters, the test lists - are embedded below as inline data. Companion code: "
-    "https://github.com/WeDoWind/IEA-Wind-Task-30."
+    "https://github.com/WeDoWind/IEA-Wind-Task-30-OC6-Phase-III."
 )
 CITE_AS = (
     "Marykovskiy, Y., Bergua, R. (2026). " + DATASET_TITLE + ". Zenodo. "

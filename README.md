@@ -10,7 +10,7 @@ campaigns, from tidy tables rather than from the 4,122 raw text files — so the
 argument about aerodynamics, not as a parsing exercise. It is also the template for benchmarking your
 own aerodynamics code against the 56 models and the two experiments.
 
-The data is a Zenodo record of its own, [10.5281/zenodo.23593301](https://doi.org/10.5281/zenodo.23593301)
+The data is a Zenodo record of its own, [10.5281/zenodo.23593300](https://doi.org/10.5281/zenodo.23593300)
 (~2.2 GB); this repository holds the code. The notebook is committed without outputs: run it to see
 the figures.
 
@@ -18,19 +18,24 @@ the figures.
 
 ### On RenkuLab
 
-Add two things to the session and everything resolves itself:
+1. In a Renku project, add this repository and a Zenodo data connector for
+   **[10.5281/zenodo.23593300](https://doi.org/10.5281/zenodo.23593300)**, the benchmark dataset
+   (this DOI always resolves to its newest version).
+2. Add a session launcher with **Create from code**: this repository, environment type Python,
+   interface JupyterLab. Renku builds the session image from two files at the repository root, once:
+   `environment.yml` (the dependencies) and `jupyterlab_extensions.txt` (Plotly's renderer for
+   JupyterLab). Rebuild it from the launcher when either changes.
+3. Launch the session and open `notebooks/oc6_phase3_figures.ipynb`. Nothing needs installing: the
+   notebook imports the package from `src/`, and `oc6_phase3.paths.data_dir()` finds the record,
+   which Renku mounts as a folder beside the repository.
 
-- this repository, and
-- a Zenodo data connector for **[10.5281/zenodo.23593301](https://doi.org/10.5281/zenodo.23593301)**,
-  the benchmark dataset.
-
-Renku mounts the record as a folder beside the repository; `oc6_phase3.paths.data_dir()` finds it.
+Renku builds from code only for public repositories.
 
 ### Locally with [uv](https://docs.astral.sh/uv/)
 
 ```bash
-git clone https://github.com/WeDoWind/IEA-Wind-Task-30.git
-cd IEA-Wind-Task-30
+git clone https://github.com/WeDoWind/IEA-Wind-Task-30-OC6-Phase-III.git
+cd IEA-Wind-Task-30-OC6-Phase-III
 
 uv venv --python 3.12                 # creates .venv
 uv pip install -e ".[notebook]"
@@ -69,6 +74,10 @@ be configured — `oc6_phase3.paths.data_dir()` finds `./data` relative to the r
 no `OC6_DATA_DIR` and no working-directory fiddling. Plotly picks its own renderer for VS
 Code; if a figure comes back blank, set `pio.renderers.default = "vscode"` in the setup
 cell.
+
+In JupyterLab, `style.use()` gives every figure an HTML copy as well, which loads plotly.js
+from its CDN. A JupyterLab without Plotly's own renderer — on RenkuLab it runs in an
+environment of its own — draws that instead of nothing.
 
 ## Working with the figures
 
@@ -162,8 +171,8 @@ Two layers, told apart by the file name:
 | `croissant.json` | | mlcroissant JSON-LD describing every file, column and unit, with the models, load cases and blade geometry inline |
 
 `oc6_phase3.data` reads them and adds what is looked up rather than stored: participant label,
-modelling approach, canonical motion phase, station radius. The record's own README describes
-every file and every correction.
+modelling approach, canonical motion phase, station radius. `croissant.json` describes every
+file and column, and `archive.source_files` every correction applied to a source file.
 
 Built from two open records, both converted in full:
 
@@ -215,6 +224,8 @@ src/oc6_phase3/
 scripts/convert_archive.py           source archives -> archive tables (run once)
 scripts/build_dataset.py             archive tables -> derived tables
 tests/                               conventions, maths and conversion rules, no data needed
+environment.yml                      RenkuLab session environment (the dependencies)
+jupyterlab_extensions.txt            RenkuLab: Plotly's renderer for JupyterLab
 ```
 
 ## Known gaps
@@ -237,7 +248,8 @@ What is still missing or differs:
 - **Two models are not in the paper's Table 3**: TUD m52 (CFD, it also submitted loads) and
   EDF2 m42 (FVW, wake data only). They are kept and marked `*` in the figures.
 - **A few internally inconsistent submissions** — DTU1/DTU2 (blade forces about 1000× smaller than
-  their hub loads), POLIMI, PRI, UoS — are kept as submitted; the record's README lists them.
+  their hub loads), POLIMI, PRI, UoS — are kept as submitted; the notebook's
+  steady-wind section quantifies them.
 
 ## Contributing
 
@@ -262,6 +274,6 @@ uv run jupyter nbconvert --clear-output --inplace notebooks/oc6_phase3_figures.i
 
 ## Licence
 
-Code MIT (see [LICENSE](LICENSE)). The dataset, [10.5281/zenodo.23593301](https://doi.org/10.5281/zenodo.23593301),
+Code MIT (see [LICENSE](LICENSE)). The dataset, [10.5281/zenodo.23593300](https://doi.org/10.5281/zenodo.23593300),
 is CC BY 4.0: the OC6 Phase III submissions are CC0, the UNAFLOW data is CC BY 4.0 and requires
 attribution to Fontanella et al. Cite the dataset, the paper and UNAFLOW if you use this work.

@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import plotly.graph_objects as go
 import plotly.io as pio
+from plotly.io.base_renderers import HtmlRenderer
 
 from .registry import WAKE_MODEL_ORDER
 
@@ -112,10 +113,25 @@ def template() -> go.layout.Template:
     )
 
 
+#: Figures as HTML that loads plotly.js from its CDN - what any JupyterLab can draw.
+HTML_RENDERER = "html_cdn"
+
+
 def use() -> None:
-    """Register the template and make it the default for this session."""
+    """Register the template and make it the default for this session.
+
+    Also gives figures in a Jupyter kernel an HTML fallback. There Plotly sends only its
+    own mime type, which JupyterLab draws only when plotly's extension is installed in the
+    environment of the *server*, not the kernel; on RenkuLab the server has an environment
+    of its own, so figures come back blank, without an error. With the fallback, a
+    JupyterLab with the extension draws the figure as before and one without it draws the
+    HTML. Other front ends (VS Code, Colab) keep the renderer Plotly chose for them.
+    """
     pio.templates[TEMPLATE_NAME] = template()
     pio.templates.default = TEMPLATE_NAME
+    pio.renderers[HTML_RENDERER] = HtmlRenderer(connected=True)
+    if pio.renderers.default == "plotly_mimetype":
+        pio.renderers.default = f"plotly_mimetype+{HTML_RENDERER}"
 
 
 def colour(wake_model: str) -> str:

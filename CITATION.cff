@@ -4,7 +4,7 @@ message: "If you use this software, please cite both it and the paper it reprodu
 type: software
 authors:
   - name: "IEA Wind TCP Task 30 (OC6)"
-repository-code: "https://github.com/WeDoWind/IEA-Wind-Task-30"
+repository-code: "https://github.com/WeDoWind/IEA-Wind-Task-30-OC6-Phase-III"
 license: MIT
 version: 0.2.0
 keywords:
@@ -46,8 +46,8 @@ references:
       - family-names: Bianchini
         given-names: Alessandro
   - type: data
-    title: "Floating Wind Turbine Rotor Aerodynamics Benchmark: Wind Tunnel Measurements and 56 Model Results for Surge and Pitch Motion (IEA Wind Task 30 OC6 Phase III)"
-    doi: 10.5281/zenodo.23593301
+    title: "Floating Wind Turbine Rotor Aerodynamics Benchmark (IEA Wind Task 30 OC6 Phase III)"
+    doi: 10.5281/zenodo.23593300
     year: 2026
     authors:
       - family-names: Marykovskiy

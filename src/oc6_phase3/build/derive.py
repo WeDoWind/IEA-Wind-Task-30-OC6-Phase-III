@@ -34,7 +34,7 @@ def blade_aero_loads(blade_aero: pd.DataFrame) -> pd.DataFrame:
     The reported stations do not reach the root or the tip, so the integrand is extended
     linearly to zero at both ends. The median agreement with the reported loads is about
     1 % on thrust and torque; the few submissions that disagree strongly are listed in the
-    README of the Zenodo record.
+    repository README.
     """
     rows = []
     # dropna=False: several steady-wind files give their single row no time stamp.

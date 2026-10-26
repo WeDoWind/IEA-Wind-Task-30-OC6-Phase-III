@@ -37,8 +37,8 @@ notebook = ["jupyterlab>=4", "ipykernel>=6", "nbformat>=5.9"]
 dev = ["oc6-phase3[notebook]", "ruff>=0.5", "pytest>=8"]
 
 [project.urls]
-Repository = "https://github.com/WeDoWind/IEA-Wind-Task-30"
-Dataset = "https://doi.org/10.5281/zenodo.23593301"
+Repository = "https://github.com/WeDoWind/IEA-Wind-Task-30-OC6-Phase-III"
+Dataset = "https://doi.org/10.5281/zenodo.23593300"
 Publication = "https://doi.org/10.5194/wes-8-465-2023"
 
 [project.scripts]

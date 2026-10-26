@@ -1,0 +1,14 @@
+# Session environment for RenkuLab: a session launcher "created from code" builds its image
+# from this file. It holds the dependencies of the oc6_phase3 package; the notebook imports
+# the package itself from this repository's src/ folder, so edits to it take effect without
+# a rebuild. Keep in step with [project] dependencies in pyproject.toml.
+name: oc6-phase3
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy>=1.24
+  - pandas>=2.0
+  - pyarrow>=14
+  - plotly=7
+  - scipy>=1.10
