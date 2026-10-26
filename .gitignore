@@ -1,0 +1,26 @@
+# Data — never commit. Fetched from Zenodo or mounted by Renku.
+/data/
+*.parquet
+*.zip
+
+# Notebook outputs are stripped before commit (see README)
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+/build/
+/dist/
+.pytest_cache/
+.ruff_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# uv lock (library, not an app - pyproject floors are the contract)
+uv.lock

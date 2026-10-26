@@ -1,0 +1,80 @@
+cff-version: 1.2.0
+title: "IEA Wind Task 30 - OC6 Phase III: analysis-ready data and figure reproductions"
+message: "If you use this software, please cite both it and the paper it reproduces."
+type: software
+authors:
+  - name: "IEA Wind TCP Task 30 (OC6)"
+repository-code: "https://github.com/WeDoWind/IEA-Wind-Task-30"
+license: MIT
+version: 0.2.0
+keywords:
+  - IEA Wind TCP
+  - IEA Wind Task 30
+  - OC6
+  - floating offshore wind
+  - aerodynamics
+  - FAIR data
+references:
+  - type: article
+    title: "OC6 project Phase III: validation of the aerodynamic loading on a wind turbine rotor undergoing large motion caused by a floating support structure"
+    doi: 10.5194/wes-8-465-2023
+    journal: "Wind Energy Science"
+    volume: 8
+    start: 465
+    end: 485
+    year: 2023
+    authors:
+      - family-names: Bergua
+        given-names: Roger
+      - family-names: Robertson
+        given-names: Amy
+      - family-names: Jonkman
+        given-names: Jason
+  - type: article
+    title: "On the characteristics of the wake of a wind turbine undergoing large motions caused by a floating structure: an insight based on experiments and multi-fidelity simulations from the OC6 project Phase III"
+    doi: 10.5194/wes-8-1659-2023
+    journal: "Wind Energy Science"
+    volume: 8
+    start: 1659
+    end: 1691
+    year: 2023
+    authors:
+      - family-names: Cioni
+        given-names: Stefano
+      - family-names: Papi
+        given-names: Francesco
+      - family-names: Bianchini
+        given-names: Alessandro
+  - type: data
+    title: "Floating Wind Turbine Rotor Aerodynamics Benchmark: Wind Tunnel Measurements and 56 Model Results for Surge and Pitch Motion (IEA Wind Task 30 OC6 Phase III)"
+    doi: 10.5281/zenodo.23593301
+    year: 2026
+    authors:
+      - family-names: Marykovskiy
+        given-names: Yuriy
+        orcid: "https://orcid.org/0000-0002-6570-6966"
+      - family-names: Bergua
+        given-names: Roger
+        orcid: "https://orcid.org/0000-0003-4703-4729"
+  - type: data
+    title: "OC6 Phase III: Validation of Wind Turbine Aerodynamic Loading During Surge/Pitch Motion"
+    doi: 10.5281/zenodo.23572116
+    year: 2026
+    authors:
+      - family-names: Bergua
+        given-names: Roger
+  - type: data
+    title: "UNAFLOW: UNsteady Aerodynamics of FLOating Wind turbines"
+    doi: 10.5281/zenodo.4740005
+    year: 2021
+    authors:
+      - family-names: Fontanella
+        given-names: Alessandro
+      - family-names: Bayati
+        given-names: Ilmas
+      - family-names: Mikkelsen
+        given-names: Robert
+      - family-names: Belloli
+        given-names: Marco
+      - family-names: Zasso
+        given-names: Alberto

@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "oc6-phase3"
+version = "0.2.0"
+description = "Analysis-ready data and Plotly reproductions of the OC6 Phase III (IEA Wind Task 30) validation figures"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "IEA Wind Task 30 / WeDoWind" }]
+keywords = [
+    "IEA Wind TCP",
+    "IEA Wind Task 30",
+    "OC6",
+    "floating offshore wind",
+    "aerodynamics",
+    "FAIR data",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pyarrow>=14",
+    "plotly>=5.18",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+notebook = ["jupyterlab>=4", "ipykernel>=6", "nbformat>=5.9"]
+dev = ["oc6-phase3[notebook]", "ruff>=0.5", "pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/WeDoWind/IEA-Wind-Task-30"
+Dataset = "https://doi.org/10.5281/zenodo.23593301"
+Publication = "https://doi.org/10.5194/wes-8-465-2023"
+
+[project.scripts]
+oc6-build-dataset = "oc6_phase3.build.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/oc6_phase3"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
